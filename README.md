@@ -7,5 +7,5 @@ Create An Accessible Website:
 2. Create a form with:
 3. Proper <label> for each field
 4. Keyboard navigable structure
-5. Use <section>, <article>, <nav>, and <footer> in a layout.
+5. Use section, article, nav, and footer in a layout.
 6. Test the contrast between text and background using online tools (e.g. WebAIM contrast checker).
