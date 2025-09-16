@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accessible Website</title>
+    <style>
+        :root {
+            --primary-color: #2e3031;
+            --secondary-color: hsl(204, 100%, 50%);
+            --text-color: #2c3e50;
+            --background-color: #ecf0f1;
+            --contrast-text: #ffffff;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            margin: 0;
+            padding: 0;
+        }
+        
+        header, footer, section, article, nav {
+            margin: 1rem;
+            padding: 1rem;
+            border-radius: 5px;
+        }
+        
+        header, footer {
+            background-color: var(--primary-color);
+            color: var(--contrast-text);
+            text-align: center;
+        }
+        
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: space-around;
+            background-color: var(--secondary-color);
+            padding: 1rem;
+            border-radius: 5px;
+        }
+        
+        nav a {
+            color: var(--contrast-text);
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        nav a:focus, nav a:hover {
+            text-decoration: underline;
+            outline: 2px solid var(--contrast-text);
+        }
+        
+        form {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            max-width: 600px;
+            margin: 2rem auto;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+        
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        button {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        button:hover, button:focus {
+            background-color: #2980b9;
+            outline: 2px solid var(--primary-color);
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+            padding: 1rem;
+        }
+        
+        .gallery img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+        
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--primary-color);
+            color: white;
+            padding: 8px;
+            z-index: 100;
+        }
+        
+        .skip-link:focus {
+            top: 0;
+        }
+        
+        a:focus, button:focus, input:focus, select:focus, textarea:focus {
+            outline: 3px solid #f39c12;
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <header>
+        <h1>Accessible Web Page</h1>
+        <p>Website By Shouvik Paul</p>
+    </header>
+    
+    <nav aria-label="Main navigation">
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+    
+    <main id="main-content">
+        <section id="about" aria-labelledby="about-heading">
+            <h2 id="about-heading">About Us</h2>
+            <p>Welcome to our website! We are committed to making the web more inclusive for everyone.</p>
+            
+            <article>
+                <h3>Our Mission</h3>
+                <p>To create digital experiences that are accessible to all users.</p>
+                <img src="Screenshot (110).png" 
+                     alt="A diverse group of people working together at a table, representing inclusivity and accessibility" 
+                     width="400" height="200">
+            </article>
+        </section>
+        
+        <section id="gallery" aria-labelledby="gallery-heading">
+            <h2 id="gallery-heading">Image Gallery</h2>
+            <div class="gallery">
+                <figure>
+                    <img src="Screenshot (112).png" 
+                         alt="A beautiful natural landscape with mountains and a lake reflecting the blue sky"
+                         width="400"
+                         height="300">
+                    <figcaption>Car</figcaption>
+                </figure>
+                <figure>
+                    <img src="Screenshot (113).png" 
+                         alt="Modern city skyline with skyscrapers and blue sky"
+                         width="400"
+                         height="300">
+                    <figcaption>Car</figcaption>
+                </figure>
+                <figure>
+                    <img src="Screenshot (114).png" 
+                         alt="Close-up of a person using a laptop with code on the screen"
+                         width="400"
+                         height="300">
+                    <figcaption>Car</figcaption>
+                </figure>
+            </div>
+        </section>
+        
+        <section id="contact" aria-labelledby="contact-heading">
+            <h2 id="contact-heading">Contact Us</h2>
+            <p>Have questions? Fill out the form below and we'll get back to you soon.</p>
+            
+            <form id="contact-form" aria-label="Contact form">
+                <div class="form-group">
+                    <label for="name">Full Name <span aria-hidden="true">*</span></label>
+                    <input type="text" id="name" name="name" required aria-required="true">
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address <span aria-hidden="true">*</span></label>
+                    <input type="email" id="email" name="email" required aria-required="true">
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" aria-describedby="phone-format">
+                    <span id="phone-format"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <select id="subject" name="subject">
+                        <option value="">Select a subject</option>
+                        <option value="general">General Inquiry</option>
+                        <option value="support">Technical Support</option>
+                        <option value="feedback">Feedback</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Your Message <span aria-hidden="true">*</span></label>
+                    <textarea id="message" name="message" rows="5" required aria-required="true"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <input type="checkbox" id="newsletter" name="newsletter">
+                    <label for="newsletter">Subscribe to our newsletter</label>
+                </div>
+                
+                <button type="submit">Send Message</button>
+            </form>
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; 2025 Shouvik's Website. All rights reserved.</p>
+        <nav aria-label="Footer navigation">
+            <ul>
+                <li><a href="#privacy">Privacy Policy</a></li>
+                <li><a href="#terms">Terms of Service</a></li>
+                <li><a href="#accessibility">Accessibility Statement</a></li>
+            </ul>
+        </nav>
+        <p>Built with ❤️ and a commitment to web accessibility</p>
+    </footer>
+    
+    <script>
+        // Add focus-visible polyfill for better keyboard navigation feedback
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add focus-visible class to the focused element when using keyboard
+            document.body.addEventListener('keydown', function(e) {
+                if (e.key === 'Tab') {
+                    document.body.classList.add('using-keyboard');
+                }
+            });
+            
+            // Remove the class when clicking with mouse
+            document.body.addEventListener('mousedown', function() {
+                document.body.classList.remove('using-keyboard');
+            });
+            
+            // Add focus styles for keyboard users
+            document.body.addEventListener('focusin', function(e) {
+                if (document.body.classList.contains('using-keyboard')) {
+                    e.target.classList.add('focus-visible');
+                }
+            });
+            
+            document.body.addEventListener('focusout', function(e) {
+                e.target.classList.remove('focus-visible');
+            });
+        });
+    </script>
+</body>
+</html>
